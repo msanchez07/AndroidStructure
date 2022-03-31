@@ -31,39 +31,39 @@ public class Connector{
     }
 
 
-    public <T> Object get(Class clazz, String path){
+    public <T> T get(Class clazz, String path){
         String url = Parameters.URL + path;
         String jsonResponse = callMethodsObject.get(url);
         if(jsonResponse != null)
-            return conversor.fromJson(jsonResponse, clazz);
+            return (T) conversor.fromJson(jsonResponse, clazz);
         return null;
     }
 
-    public <T> Object post(Class clazz, T data, String path){
+    public <T> T post(Class clazz, T data, String path){
         String url = Parameters.URL + path;
         String jsonObject = conversor.toJson(data);
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonObject);
         String jsonResponse = callMethodsObject.post(url, body);
         if(jsonResponse != null)
-            return conversor.fromJson(jsonResponse, clazz);
+            return (T) conversor.fromJson(jsonResponse, clazz);
         return null;
     }
 
-    public <T> Object put(Class clazz, T data, String path){
+    public <T> T put(Class clazz, T data, String path){
         String url = Parameters.URL + path;
         String jsonObject = conversor.toJson(data);
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonObject);
         String jsonResponse = callMethodsObject.put(url, body);
         if(jsonResponse != null)
-            return conversor.fromJson(jsonResponse, clazz);
+            return (T) conversor.fromJson(jsonResponse, clazz);
         return null;
     }
 
-    public <T> Object delete(Class clazz, String path){
+    public <T> T delete(Class clazz, String path){
         String url = Parameters.URL + path;
         String jsonResponse = callMethodsObject.delete(url);
         if(jsonResponse != null)
-            return conversor.fromJson(jsonResponse, clazz);
+            return (T) conversor.fromJson(jsonResponse, clazz);
         return null;
     }
 
