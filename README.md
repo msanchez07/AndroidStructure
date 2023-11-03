@@ -1,2 +1,2 @@
 # AndroidStructure
-A simple android project structure that allows making REST calls
+A simple android project structure that allows making REST calls.
